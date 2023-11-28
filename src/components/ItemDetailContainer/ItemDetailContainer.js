@@ -1,7 +1,8 @@
+import "./ItemDetailContainer.css"; 
 import React from "react"; 
 import ReactDom from "react-dom/client";
 import { useState, useEffect} from "react";
-import "./ItemDetailContainer.css"; 
+
 import { getProductsById, getProducts, getProductbyCategory } from "../../dataProducts";
 import ItemDetail from "../ItemDetail/ItemDetail"; 
 import { useParams } from "react-router-dom";

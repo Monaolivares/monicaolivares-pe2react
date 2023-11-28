@@ -12,23 +12,20 @@ import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
 const NavBar = () => {
     return (
         <nav className="NavBar">
-           <div className="Header-navbar">
-                <img src={Logo} className="img-navbar"></img>
-                <h2 className="H2-nav">Botica Bosque</h2>
-           </div>
+            
+                <div className="Header-navbar">
+                    <img src={Logo} className="img-navbar"></img>
+                    <h2 className="H2-nav">Botica Bosque</h2>
+                </div>
          
            <div className="Footer-NavBar">
-                <Link to='/'> Botica Bosque </Link>
-                <NavLink to={`/category/cosmetica natural`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Cosmetica Natural</NavLink>
-                <NavLink to={`/category/textiles`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Textiles</NavLink>
-                <NavLink to={`/category/licores`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Licores</NavLink>
-            <div className="navCategorias">
-               
-     
-     </div>
-     <div className="Cart-widget">
-         <CartWidget/>
-     </div>
+                <button className="Botones"><Link to='/'> Botica Bosque </Link></button>
+                <button className="Botones"><NavLink to={`/category/cosmetica natural`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Cosmetica Natural</NavLink></button>
+                <button className="Botones"><NavLink to={`/category/licores`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Licores</NavLink></button>
+                <button className="Botones"><NavLink to={`/category/textiles`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Textiles</NavLink></button>
+                <div className="Cart-widget">
+                    <CartWidget/>
+                </div>
 
            </div>
         </nav>          

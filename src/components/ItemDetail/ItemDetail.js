@@ -1,5 +1,6 @@
 import "./ItemDetail.css"; 
 import ItemCount from '../ItemCount/ItemCount'; 
+import { getProducts, getProductsById, getProductbyCategory } from "../../dataProducts";
 
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {
     return (
@@ -17,7 +18,7 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
                     Categoria: {category}
                 </p>
                 <p className="Info">
-                    description: {description}
+                    Descripcion: {description}
                 </p>
                 <p className="Info">
                     Precio: ${price}

@@ -1,0 +1,16 @@
+
+
+.CardItem{
+    background-color: rgb(181,200,196);
+    color: rgb(85,95,104); 
+    border-radius: 8%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    margin: 15px; 
+    padding: 5px; 
+    
+
+   
+}

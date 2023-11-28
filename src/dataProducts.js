@@ -52,14 +52,33 @@ export const getProducts = ()=>{
 })
 }
 
-export const getProductsById = (productId) => {
-    return new Promise ((resolve)=>{
-        setTimeout(()=> {
-            resolve(products.find(prod => prod.id === productId))
-        }, 500)
+export const getProductById = (productId) => {
+
+    return new Promise((resolve) => {
+    
+    setTimeout(() => {
+    
+    const foundProduct = products.find(prod => prod.id === productId.itemId);
+    
+    if (foundProduct) {
+    
+    console.log("Product found:", foundProduct);
+    
+    resolve(foundProduct);
+    
+    } else {
+    
+    console.log("Product not found with ID:", productId);
+    
+    resolve(null); // You can resolve with null or any other indication of failure
+    
     }
-    )
-}
+    
+    }, 500);
+    
+    });
+    
+    };
 
 export const getProductbyCategory = (categoryId) => {
 

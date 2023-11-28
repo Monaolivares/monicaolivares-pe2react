@@ -3,7 +3,7 @@ import ReactDom from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./ItemListContainer.css"; 
-import { getProducts, getProductsById, getProductbyCategory } from "../../dataProducts";
+import { getProducts, getProductById, getProductbyCategory } from "../../dataProducts";
 import {useParams} from "react-router-dom"
 
 //components

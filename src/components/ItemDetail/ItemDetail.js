@@ -1,6 +1,6 @@
 import "./ItemDetail.css"; 
 import ItemCount from '../ItemCount/ItemCount'; 
-import { getProducts, getProductsById, getProductbyCategory } from "../../dataProducts";
+import { getProducts, getProductById, getProductbyCategory } from "../../dataProducts";
 
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {
     return (

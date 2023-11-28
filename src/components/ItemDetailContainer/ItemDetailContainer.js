@@ -3,7 +3,7 @@ import React from "react";
 import ReactDom from "react-dom/client";
 import { useState, useEffect} from "react";
 
-import { getProductsById, getProducts, getProductbyCategory } from "../../dataProducts";
+import { getProductById, getProducts, getProductbyCategory } from "../../dataProducts";
 import ItemDetail from "../ItemDetail/ItemDetail"; 
 import { useParams } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
     const {ItemId} = useParams()
 
     useEffect(() => {
-        getProductsById(ItemId)
+        getProductById(ItemId)
             .then(response => {
                 setProduct(response)
             })

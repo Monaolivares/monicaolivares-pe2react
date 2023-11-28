@@ -1,10 +1,12 @@
 import "./ItemDetail.css"; 
 import ItemCount from '../ItemCount/ItemCount'; 
 import { getProducts, getProductById, getProductbyCategory } from "../../dataProducts";
+import { useParams } from "react-router-dom";
 
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {
     return (
-        <article className="CardItem">
+       <div className="CardItemContainer">
+         <article className="CardItem">
             <header className="Header">
                 <h2 className="ItemHeader">
                     {name}
@@ -29,6 +31,7 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
             </footer>
 
         </article>
+       </div>
     )
         
 }

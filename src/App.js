@@ -2,6 +2,7 @@ import React from "react";
 import ReactDom from 'react-dom/client'; 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css"; 
+import { useParams } from "react-router-dom";
 
 
 // componentes
@@ -16,10 +17,10 @@ function App(){
              <BrowserRouter>
              <NavBar/>
                     <Routes>
-                        <Route path="/" element={<ItemListContainer/>}></Route>
-                        <Route path="/category/:categoryId" element={<ItemListContainer/>}></Route>
-                        <Route path="item/:itemId" element={<ItemDetailContainer/>} ></Route>
-                       
+                    <Route path='/' element={<ItemListContainer />}/>
+                    <Route path='/category/:categoryId' element={<ItemListContainer />}/>
+                    <Route path='/item/:itemId' element={<ItemDetailContainer />}/>
+                    <Route path='*' element={<h1>404 NOT FOUND PAGE</h1>}/>
                     </Routes>
                 </BrowserRouter>
            
@@ -28,7 +29,6 @@ function App(){
        
     )
 }
-
 export default App; 
 
 

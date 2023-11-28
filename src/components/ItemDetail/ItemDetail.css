@@ -1,0 +1,9 @@
+.CardItem{
+    width: 300px; 
+    
+}
+
+.CardItemContainer{
+    display: flex; 
+    justify-content: center;
+}

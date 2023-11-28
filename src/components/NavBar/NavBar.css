@@ -14,7 +14,7 @@
 }                
 
 .img-navbar{
-    width: 30%;  
+    width: 200px;  
 
 }
 
@@ -39,4 +39,8 @@
     background-color: rgb(116,119,74);
     color: rgb(247,248,248); 
     border-radius: 20%; ;
+}
+
+NavLink{
+    text-decoration: none;
 }

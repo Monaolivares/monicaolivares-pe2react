@@ -4,26 +4,42 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./ItemListContainer.css"; 
 import { getProducts, getProductById, getProductbyCategory } from "../../dataProducts";
-import {useParams} from "react-router-dom"
+import {useParams} from "react-router-dom"; 
+import {getDocs, collection, query, where, doc} from "firebase/firestore"; 
+import {db} from '../../services/firebase/firebaseConfig'; 
 
 //components
 import ItemList from "../ItemList/ItemLIst"; 
 
 const ItemListContainer = ({greetings}) => {
     const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const {categoryId} = useParams()
 
 
  
     useEffect(() => {
-        const asyncFunc = categoryId ? getProductbyCategory : getProducts
-        asyncFunc(categoryId)
+        setLoading(true)
+
+        const collectionRef = categoryId 
+            ? query(collection(db, 'products'), where('category', '==', categoryId))
+            : collection(db, 'products')
+        
+        getDocs(collectionRef)
             .then(response => {
-                setProducts(response)
+                const productsAdapted = response.docs.map(docs => {
+                    const data = doc.cata()
+                    return {id:doc.id, ...data}
+                })
+                setProducts(productsAdapted)
             })
+     
             .catch(error => {
                 console.error(error)
+            })
+            .finally(() => {
+                setLoading(false)
             })
     }, [categoryId])
     return (
@@ -31,7 +47,10 @@ const ItemListContainer = ({greetings}) => {
             <h1>
                {greetings}
             </h1>
+            <section>
             <ItemList products={products}/>
+            </section>
+            
         </div>
     )
 }

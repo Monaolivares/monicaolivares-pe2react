@@ -20,9 +20,9 @@ const NavBar = () => {
          
            <div className="Footer-NavBar">
                 <button className="Botones"><Link to='/'> Botica Bosque </Link></button>
-                <button className="Botones"><NavLink to={`/category/cosmetica natural`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Cosmetica Natural</NavLink></button>
+                <button className="Botones"><NavLink to={`/category/cosmetica`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Cosmetica Natural</NavLink></button>
                 <button className="Botones"><NavLink to={`/category/licores`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Licores</NavLink></button>
-                <button className="Botones"><NavLink to={`/category/textiles`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Textiles</NavLink></button>
+                <button className="Botones"><NavLink to={`/category/textil`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Textiles</NavLink></button>
                 <div className="Cart-widget">
                     <CartWidget/>
                 </div>

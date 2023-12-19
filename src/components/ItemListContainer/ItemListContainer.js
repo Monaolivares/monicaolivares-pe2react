@@ -29,7 +29,7 @@ const ItemListContainer = ({greetings}) => {
         getDocs(collectionRef)
             .then(response => {
                 const productsAdapted = response.docs.map(docs => {
-                    const data = doc.cata()
+                    const data = docs.data()
                     return {id:doc.id, ...data}
                 })
                 setProducts(productsAdapted)

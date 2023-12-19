@@ -11,6 +11,9 @@ import {db} from '../../services/firebase/firebaseConfig';
 //components
 import ItemList from "../ItemList/ItemLIst"; 
 
+
+
+
 const ItemListContainer = ({greetings}) => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
@@ -28,8 +31,8 @@ const ItemListContainer = ({greetings}) => {
         
         getDocs(collectionRef)
             .then(response => {
-                const productsAdapted = response.docs.map(docs => {
-                    const data = docs.data()
+                const productsAdapted = response.docs.map(doc => {
+                    const data = doc.data()
                     return {id:doc.id, ...data}
                 })
                 setProducts(productsAdapted)

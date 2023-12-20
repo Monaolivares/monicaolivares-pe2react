@@ -3,9 +3,9 @@ import ReactDom from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./ItemListContainer.css"; 
-import { getProducts, getProductById, getProductbyCategory } from "../../dataProducts";
+
 import {useParams} from "react-router-dom"; 
-import {getDocs, collection, query, where, doc} from "firebase/firestore"; 
+import {getDocs, collection, query, where} from "firebase/firestore"; 
 import {db} from '../../services/firebase/firebaseConfig'; 
 
 //components

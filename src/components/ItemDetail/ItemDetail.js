@@ -1,12 +1,13 @@
 import "./ItemDetail.css"; 
 import ItemCount from '../ItemCount/ItemCount'; 
-import { getProducts, getProductById, getProductbyCategory } from "../../dataProducts";
+
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom"; 
 import {useState} from "react"; 
 import { createContext, useContext } from "react";
 
 import { CartContext } from "../../context/CartContext";
+import { db } from "../../services/firebase/firebaseConfig";
 
 
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {

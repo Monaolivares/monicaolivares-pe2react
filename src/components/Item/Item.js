@@ -3,8 +3,9 @@ import ReactDom from "react-dom/client";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import { useState, useEffect} from "react";
 import "./Item.css"; 
-import { getProducts, getProductbyCategory, getProductById } from "../../dataProducts";
+
 import { useParams } from "react-router-dom";
+import {db} from "../../services/firebase/firebaseConfig"; 
 
 
 const Item = ({id, name, img, price, stock}) => {

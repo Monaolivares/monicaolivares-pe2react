@@ -3,11 +3,10 @@ import React from "react";
 import ReactDom from "react-dom/client";
 import { useState, useEffect} from "react";
 
-import { getProductById, getProducts, getProductbyCategory } from "../../dataProducts";
 import ItemDetail from "../ItemDetail/ItemDetail"; 
 import { useParams } from "react-router-dom";
 
-import {getDocs, doc, getDoc} from 'firebase/firestore'; 
+import { doc, getDoc} from 'firebase/firestore'; 
 import { db } from "../../services/firebase/firebaseConfig";
 
 
@@ -21,7 +20,7 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         setLoading(true)
 
-        const docRef = doc(db, 'products', itemId)
+        const docRef = doc(db, 'products', itemId) 
 
         getDoc(docRef)
             .then(response => {
@@ -30,7 +29,10 @@ const ItemDetailContainer = () => {
                 setProduct(productAdapted)
             })
             .catch(error => {
-                console.error(error)
+                console.log(error)
+            })
+            .finally(()=> {
+                setLoading(false)
             })
     }, [itemId])
 

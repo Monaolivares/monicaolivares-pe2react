@@ -1,29 +1,70 @@
-import "./Cart.css"; 
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
-import CartItem from "../CartItem/CartItem"; 
-import {Link} from "react-router-dom"; 
+import {useContext} from 'react'
+import {CartContext} from '../../context/CartContext'
+import {Link} from 'react-router-dom'
+//STYLES
+import styles from './Cart.css'
+import CheckoutForm from '../CheckoutForm/CheckoutForm'
 
 const Cart = () => {
-     const {cart, clearCart, totalQuantity, total} = useContext(CartContext)
+  const {cart, clearCart, removeItem, addItem, removeProduct} =
+    useContext(CartContext)
 
-     if(totalQuantity === 0 ) {
-        return (
-            <div>
-                <h1>No hay nada en tu carrito por ahora.</h1>
-                <Link to="/" className="Option">Ver Productos</Link>
+  return (
+    <>
+      <div>
+        {cart.items.length !== 0 ? (
+          cart.items.map(item => (
+            <div key={item.id} className={styles.cartContainer}>
+              <div>
+                <img
+                  className={styles.cartImg}
+                  src={item.img}
+                  alt={item.name}
+                />
+              </div>
+              <div className={styles.cartBtns}>
+                <button
+                  className={styles.cartBtn}
+                  onClick={() => removeItem(item)}
+                >
+                  ➖
+                </button>
+                <p className={styles.cartPrice}>Cantidad: {item.quantity}</p>
+                <button
+                  className={styles.cartBtn}
+                  onClick={() => addItem(item)}
+                >
+                  ➕
+                </button>
+              </div>
+              <div>
+                <p className={styles.cartPrice}>Precio: ${item.price}</p>
+              </div>
+              <div className={styles.cartPrice}>
+                <p className={styles.cartPrice}>
+                  SubTotal: ${item.quantity * item.price}
+                </p>
+              </div>
+              <div>
+                <button
+                  className={styles.cartBtn}
+                  onClick={() => removeProduct(item)}
+                >
+                  ❌
+                </button>
+              </div>
             </div>
-        )
-     }
-
-     return (
-        <div>
-            {cart.map(p => <CartItem key={p.id} {...p}/>) }
-            <h3>Total: ${total}</h3>
-            <button onClick={()=> clearCart()} className="Button">Limpiar Carrito</button>
-            <Link to="/checkout" className="Option">Ir a checkout</Link>
-        </div>
-     )
+          ))
+        ) : (
+          <p>No hay items en el carrito</p>
+        )}
+        {cart.items.length !== 0 && <CheckoutForm />}
+      </div>
+      <div>
+        <button onClick={() => clearCart(cart)}>Vaciar Carrito</button>
+      </div>
+    </>
+  )
 }
 
-export default Cart 
+export default Cart

@@ -1,42 +1,103 @@
-import {createContext, useState} from "react"; 
+import {createContext, useState} from 'react'
+import {collection, addDoc} from 'firebase/firestore'
+import {db} from './../services/firebase/firebaseConfig'
 
-export const CartContext = createContext({
-    cart: []
-})
+export const CartContext = createContext()
 
 export const CartProvider = ({children}) => {
-    const [cart, setCart] = useState([])
+  const [cart, setCart] = useState({
+    buyer: {
+      name: 'Jhon Doe',
+      phone: '12342354234',
+      email: 'jhonDoe@example.com'
+    },
+    items: [],
+    total: 0
+  })
 
-    console.log(cart)
+  const [order, setOrderId] = useState(null)
 
-    const addItem = (item, quantity) => {
-        if(!isInCart(item.id)) {
-            setCart(prev => [...prev, {...item, quantity}])
-        } else {
-            console.error("Perdona, ya lo agregaste")
-        }
+  const addItem = product => {
+    const {items} = cart
+    const index = items.findIndex(i => i.id === product.id)
+
+    if (index > -1) {
+      items[index].quantity += 1
+    } else {
+      items.push({
+        ...product
+      })
     }
 
+    setCart({
+      ...cart,
+      items,
+      total: totalPrice()
+    })
+  }
 
-    const removeItem = (itemId) => {
-        const cartUpdated = cart.filter(prod => prod.id !== itemId)
-        setCart(cartUpdated)
+  const removeItem = product => {
+    const {items} = cart
+    const index = items.findIndex(i => i.id === product.id)
+
+    if (index > -1) {
+      if (items[index].quantity > 1) {
+        items[index].quantity -= 1
+      }
     }
 
-    const clearCart = () => {
-        setCart([])
+    setCart({
+      ...cart,
+      items
+    })
+  }
+
+  const removeProduct = product => {
+    const {items} = cart
+    const index = items.findIndex(i => i.id === product.id)
+
+    if (index > -1) {
+      items.splice(index, 1)
     }
 
-    const isInCart = (itemId) => {
-        return cart.some(prod => prod.id === itemId)
-    }
+    setCart({
+      ...cart,
+      items
+    })
+  }
 
-    const totalPrice = () =>{
-        return cart.reduce((prev,act) => prev + act.quantity * act.price, 0);  
+  const clearCart = cart => {
+    if (cart.items.lenght === 0) return
+    else setCart({...cart, items: [], total: 0})
+  }
 
-    }
+  const totalPrice = () => {
+    return cart.items.reduce((acc, item) => acc + item.quantity * item.price, 0)
+  }
 
-    return (
-        <CartContext.Provider value={{cart, addItem, removeItem, clearCart}}>{children}</CartContext.Provider>
-    )
+  const sendOrder = () => {
+    const ordersCollection = collection(db, 'orders')
+
+    addDoc(ordersCollection, {...cart, date: new Date()}).then(({id}) => {
+      setOrderId(id)
+    })
+  }
+
+  return (
+    <CartContext.Provider
+      value={{
+        cart,
+        setCart,
+        addItem,
+        removeItem,
+        clearCart,
+        totalPrice,
+        removeProduct,
+        sendOrder,
+        order
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  )
 }

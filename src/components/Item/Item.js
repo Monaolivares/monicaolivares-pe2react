@@ -1,39 +1,21 @@
-import React from "react"; 
-import ReactDom from "react-dom/client"; 
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-import { useState, useEffect} from "react";
-import "./Item.css"; 
+//STYLES SHEET
+import './Item.css'
 
-import { useParams } from "react-router-dom";
-import {db} from "../../services/firebase/firebaseConfig"; 
-
-
-const Item = ({id, name, img, price, stock}) => {
-    return (
-        
-            <article className="CardItem">
-            <header className="Header">
-                <h2 className="ItemHeader"> {name} </h2>
-            </header>
-            <picture>
-                <img src={img} alt={name} className="ItemImg"/>
-            </picture>
-            <section>
-                <p className="Info">
-                    Precio: ${price}
-                </p>
-                <p className="Info">
-                    Stock disponible: {stock}
-                </p>
-            </section>
-            <footer className="ItemFooter">
-                <Link to={`/item/${id}`} className="Option">Ver detalle</Link>
-            </footer>
-
-        </article>
-    
-    )
+const Item = ({product}) => {
+  return (
+    <article className='CardItem'>
+      <header className='Header'>
+        <h2 className='ItemHeader'> {product.name} </h2>
+      </header>
+      <picture>
+        <img src={product.img} alt={product.name} className='ItemImg' />
+      </picture>
+      <section>
+        <p className='Info'>Precio: ${product.price}</p>
+        <p className='Info'>Stock disponible: {product.stock}</p>
+      </section>
+    </article>
+  )
 }
-
 
 export default Item

@@ -1,20 +1,19 @@
-import React, { useEffect } from "react"; 
-import ReactDom from "react-dom/client"; 
-import { BrowserRouter } from "react-router-dom";
-import { useState } from "react";
-import "./ItemList.css"; 
-import { getProducts } from "../../dataProducts";
-
-import Item from "../Item/Item"
+import {Link} from 'react-router-dom'
+//COMPONENTS
+import Item from '../Item/Item'
+//STYLES
+import './ItemList.css'
 
 const ItemList = ({products}) => {
-        return(
-            <div className="ListaProductos">
-                {products.map(prod => <Item key={prod.id} {...prod}/>)}
-
-            </div>
-        )
+  return (
+    <div className='ListaProductos'>
+      {products.map(prod => (
+        <Link to={`/item/${prod.id}`} key={prod.id}>
+          <Item key={prod.id} product={prod} />
+        </Link>
+      ))}
+    </div>
+  )
 }
-
 
 export default ItemList

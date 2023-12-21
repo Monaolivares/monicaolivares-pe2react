@@ -1,46 +1,60 @@
-import "./ItemDetailContainer.css"; 
-import React from "react"; 
-import ReactDom from "react-dom/client";
-import { useState, useEffect} from "react";
-
-import ItemDetail from "../ItemDetail/ItemDetail"; 
-import { useParams } from "react-router-dom";
-
-import { doc, getDoc} from 'firebase/firestore'; 
-import { db } from "../../services/firebase/firebaseConfig";
-
-
+import {useState, useEffect, useContext} from 'react'
+import {collection, getDocs, query} from 'firebase/firestore'
+import {db} from '../../services/firebase/firebaseConfig'
+import styles from './ItemDetailContainer.css'
+import {useParams} from 'react-router-dom'
+import {CartContext} from '../../context/CartContext'
 
 const ItemDetailContainer = () => {
-    const[product, setProduct] = useState(null)
-    const [loading, setLoading] = useState(true)
+  const [product, setProduct] = useState(null)
+  const itemId = useParams()
+  const {addItem} = useContext(CartContext)
 
-    const {itemId} = useParams()
+  useEffect(() => {
+    const collectionRef = query(collection(db, 'products'))
 
-    useEffect(() => {
-        setLoading(true)
+    getDocs(collectionRef)
+      .then(response => {
+        const productsAdapted = response.docs.map(doc => {
+          return doc.data()
+        })
+        setProduct(productsAdapted)
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  }, [])
 
-        const docRef = doc(db, 'products', itemId) 
+  return (
+    <>
+      {product &&
+        product
+          .filter(prod => prod.id === itemId.itemId)
+          .map(prod => (
+            <div key={prod.id} className={styles.CardItemContainer}>
+              <div className='Header'>
+                <h2 className='ItemHeader'>{prod.name}</h2>
+              </div>
 
-        getDoc(docRef)
-            .then(response => {
-                const data = response.data()
-                const productAdapted = {id: response.id, ...data}
-                setProduct(productAdapted)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-            .finally(()=> {
-                setLoading(false)
-            })
-    }, [itemId])
+              <div>
+                <img src={prod.img} alt={prod.name} className='ItemImg'></img>
+              </div>
 
-    return(
-        <div className="ItemDetailContainer">
-            <ItemDetail {...product}/>
-        </div>
-    )
+              <div className={styles.Info}>
+                <p className='Info'>Categoria: {prod.category}</p>
+                <p className='Info'>Descripcion: {prod.description}</p>
+                <p className='Info'>Precio: ${prod.price}</p>
+                <button
+                  className={styles.buttonAdd}
+                  onClick={() => addItem(prod)}
+                >
+                  Agregar al Carrito
+                </button>
+              </div>
+            </div>
+          ))}
+    </>
+  )
 }
 
 export default ItemDetailContainer

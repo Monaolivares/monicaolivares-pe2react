@@ -1,0 +1,24 @@
+.cartContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .cartBtns {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .cartBtn {
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+  
+  .cartPrice {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  

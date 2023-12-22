@@ -22,7 +22,7 @@ const Cart = () => {
                   alt={item.name}
                 />
               </div>
-              <div className={styles.cartBtns}>
+              <div className="cartBtnsCant">
                 <button
                   className="CartBtn"
                   onClick={() => removeItem(item)}

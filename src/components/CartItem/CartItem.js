@@ -10,7 +10,7 @@ const CartItem =({products})=> {
     
     const { removeProducts } = useContext(CartContext); 
     return(
-        <div> 
+        <div className="CartItem"> 
             <picture>
                 <img src={products.img} alt ={products.name}/>
             </picture>

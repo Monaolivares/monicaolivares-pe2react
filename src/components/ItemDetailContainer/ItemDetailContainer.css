@@ -1,17 +1,26 @@
 .CardItemContainer {
-    display: flex;
+  display: flex; 
+  flex-direction: column;
+  background-color: rgb(181,200,196); 
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 8%;
+    /*display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    width: 50%;
-    margin: 0 auto;
+    
+    
+    
+    
+    
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding: 1.5rem;
     border-radius: 10px;
     background-color: rgb(34, 140, 140);
-    color: aliceblue;
+    color: aliceblue;*/
   }
   
   .Info {
@@ -28,8 +37,6 @@
     color: aliceblue;
     font-size: 1rem;
   
-    &:hover {
-      background-color: rgb(46, 197, 197);
-    }
+  
   }
   

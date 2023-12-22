@@ -5,6 +5,8 @@ import styles from './ItemDetailContainer.css'
 import {useParams} from 'react-router-dom'
 import {CartContext} from '../../context/CartContext'
 
+
+
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState(null)
   const itemId = useParams()
@@ -26,12 +28,11 @@ const ItemDetailContainer = () => {
   }, [])
 
   return (
-    <>
-      {product &&
-        product
+    <div>
+      {product && product
           .filter(prod => prod.id === itemId.itemId)
           .map(prod => (
-            <div key={prod.id} className={styles.CardItemContainer}>
+            <div key={prod.id} className="CardItemContainer">
               <div className='Header'>
                 <h2 className='ItemHeader'>{prod.name}</h2>
               </div>
@@ -53,7 +54,7 @@ const ItemDetailContainer = () => {
               </div>
             </div>
           ))}
-    </>
+    </div>
   )
 }
 

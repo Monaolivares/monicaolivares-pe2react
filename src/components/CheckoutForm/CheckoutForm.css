@@ -1,0 +1,13 @@
+.Container{
+    background-color: rgb(181,200,196); 
+    margin: 15px; 
+    padding: 5px; 
+    display: flex; 
+}
+
+label{
+    font-family: 'Cutive Mono', monospace;
+}
+button{
+    font-family: 'Cutive Mono', monospace;
+}

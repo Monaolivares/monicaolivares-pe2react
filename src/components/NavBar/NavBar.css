@@ -45,3 +45,8 @@
 NavLink{
     text-decoration: none;
 }
+
+Link{
+    color: white;
+    text-decoration: none;
+}

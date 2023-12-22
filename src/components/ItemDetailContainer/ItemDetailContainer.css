@@ -31,7 +31,7 @@
   .buttonAdd {
     border: none;
     outline: none;
-    background-color: rgb(80, 179, 146);
+    background-color:rgb(85,95,104);
     padding: 1rem 0.5rem;
     border-radius: 5px;
     color: aliceblue;
@@ -39,4 +39,8 @@
   
   
   }
-  
+  .ContAddCarrito{
+    display: flex; 
+    justify-content: center;
+    margin: 5px; 
+  }

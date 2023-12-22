@@ -10,7 +10,7 @@ const CartWidget = () => {
     <Link to='/cart' className={style.CartWidget}>
       <div className={style.cartIconContainer}>
         <img className='CartImg' src={cartIcon} alt='cart-widget' />
-        <p>{cart.length}</p>
+        <p className='pCartWidget'>{cart.length}</p>
       </div>
     </Link>
   )

@@ -45,12 +45,14 @@ const ItemDetailContainer = () => {
                 <p className='Info'>Categoria: {prod.category}</p>
                 <p className='Info'>Descripcion: {prod.description}</p>
                 <p className='Info'>Precio: ${prod.price}</p>
+                <div className='ContAddCarrito'>
                 <button
                   className={styles.buttonAdd}
                   onClick={() => addItem(prod)}
                 >
                   Agregar al Carrito
                 </button>
+                </div>
               </div>
             </div>
           ))}

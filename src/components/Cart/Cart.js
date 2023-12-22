@@ -14,7 +14,7 @@ const Cart = () => {
       <div>
         {cart.items.length !== 0 ? (
           cart.items.map(item => (
-            <div key={item.id} className={styles.cartContainer}>
+            <div key={item.id} className="CartContainer">
               <div>
                 <img
                   className={styles.cartImg}
@@ -24,7 +24,7 @@ const Cart = () => {
               </div>
               <div className={styles.cartBtns}>
                 <button
-                  className={styles.cartBtn}
+                  className="CartBtn"
                   onClick={() => removeItem(item)}
                 >
                   ➖

@@ -19,7 +19,7 @@ function Footer(){
                     <li><a href="https://www.youtube.com/channel/UCSUGhQZiGhX1BMBRH-mD7Aw"><img src={Youtube}/></a></li>
                 </ul>
             </div>
-            <div>
+            <div className="SiteLinks">
                 <ul>
                     <li>Tiendas Fisicas</li>
                     <li>Nuestra Historia</li>

@@ -29,15 +29,15 @@ const CheckoutForm = () => {
       <form onSubmit={e => handleFormChange(e)} className='Form'>
         <label className='Label'>
           Nombre
-          <input required className='Input' type='text' name='nombre' />
+          <input required className='Input' type='text' name='nombre' placeholder='Nombre comprador'/>
         </label>
         <label className='Label'>
           Telefono
-          <input required className='Input' type='phone' name='telefono' />
+          <input required className='Input' type='phone' name='telefono' placeholder='323-555-2345'/>
         </label>
         <label required className='Label'>
           Email
-          <input required className='Input' type='email' name='email' />
+          <input required className='Input' type='email' name='email' placeholder="example@123.com" />
         </label>
         <div className='Label'>
           <button type='submit' className='Button'>

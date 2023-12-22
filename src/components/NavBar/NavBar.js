@@ -8,6 +8,7 @@ import Logo from "../../img/botica.png"
 import CartWidget from "../CartWidget/CartWidget";
 import ItemListContainer from "../ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
+import Textil from "../sections/textil"; 
 
 const NavBar = () => {
     return (
@@ -18,11 +19,12 @@ const NavBar = () => {
                     <h2 className="H2-nav">Botica Bosque</h2>
                 </div>
          
-           <div className="Footer-NavBar">
-                <button className="Botones"><Link to='/'> Botica Bosque </Link></button>
-                <button className="Botones"><NavLink to={`/category/cosmetica`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Cosmetica Natural</NavLink></button>
-                <button className="Botones"><NavLink to={`/category/licores`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Licores</NavLink></button>
-                <button className="Botones"><NavLink to={`/category/textil`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}>Textiles</NavLink></button>
+           <div className="BotonesNavbar">
+                <span className="Botones"><Link to='/'> <p className="Link">Botica Bosque </p></Link></span>
+                <span className="Botones"><NavLink to={`/category/cosmetica`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}><p className="Link">Cosmetica Natural</p></NavLink></span>
+               <span className="Botones"> <NavLink to={`/category/licores`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}><p className="Link">Licores</p></NavLink></span>
+               <span className="Botones">  <NavLink to={`/category/textil`} className={({ isActive}) =>isActive? 'ActiveOption' : 'Option'}><p className="Link">Textil</p></NavLink></span>
+              
                 <div className="Cart-widget">
                     <CartWidget/>
                 </div>

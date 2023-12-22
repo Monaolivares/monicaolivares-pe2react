@@ -1,14 +1,13 @@
 .Botones{
-    background-color: rgb(116,119,74); 
+    background-color: rgb(64,79,60); 
     color: rgb(247,248,248); 
+    padding: 5px; 
+    margin: 5px, 10px, 5px, 10px;  
     
     
 
 }
-.Option.clicked{
-    color: white; 
-    font-size: 20px;
-}
+
 
 
 .Header-navbar{
@@ -33,25 +32,29 @@
     background-color: rgb(64,79,60);
 }
 
-.Footer-NavBar{
+.BotonesNavbar{
     display: flex; 
     flex-direction: row; 
     align-content: center;
-    justify-content: center;
+    justify-content: center; 
     
 }
 
 .Cart-widget{
-    background-color: rgb(116,119,74);
+    background-color:rgb(64,79,60);
     color: rgb(247,248,248); 
-    border-radius: 20%; ;
+    
 }
 
 NavLink{
     text-decoration: none;
+    color: white; 
+}
+NavLink.clicked{
+    color: white; 
 }
 
-Link{
-    color: white;
-    text-decoration: none;
+.Link{
+    color: rgb(247,246,226);
+    
 }

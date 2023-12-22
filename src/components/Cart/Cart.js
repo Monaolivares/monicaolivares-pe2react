@@ -1,6 +1,6 @@
 import {useContext} from 'react'
 import {CartContext} from '../../context/CartContext'
-import {Link} from 'react-router-dom'
+
 //STYLES
 import styles from './Cart.css'
 import CheckoutForm from '../CheckoutForm/CheckoutForm'
@@ -61,6 +61,7 @@ const Cart = () => {
         {cart.items.length !== 0 && <CheckoutForm />}
       </div>
       <div>
+      <h2>Total: ${cart.total}</h2>
         <button onClick={() => clearCart(cart)}>Vaciar Carrito</button>
       </div>
     </>

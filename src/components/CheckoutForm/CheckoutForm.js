@@ -1,11 +1,13 @@
 import './CheckoutForm.css'
-import {useContext} from 'react'
+import {useContext, useState} from 'react'
 import {CartContext} from '../../context/CartContext'
+import {Link} from 'react-router-dom'
 
 const CheckoutForm = () => {
-  const {sendOrder, setCart, cart} = useContext(CartContext)
+  const {sendOrder, setCart, order} = useContext(CartContext)
+  const [viewOrder, setViewOrder] = useState(false)
 
-  const handleFormChange = e => {
+  const handleFormChange = async e => {
     e.preventDefault()
 
     const formData = new FormData(e.target)
@@ -13,15 +15,19 @@ const CheckoutForm = () => {
     const phone = formData.get('telefono')
     const email = formData.get('email')
 
-    setCart({
-      ...cart,
+    await setCart(prevCart => ({
+      ...prevCart,
       buyer: {
         name,
         phone,
         email
       }
-    })
+    }))
     sendOrder()
+  }
+
+  const btnViewOrder = () => {
+    setViewOrder(true)
   }
 
   return (
@@ -29,20 +35,30 @@ const CheckoutForm = () => {
       <form onSubmit={e => handleFormChange(e)} className='Form'>
         <label className='Label'>
           Nombre
-          <input required className='Input' type='text' name='nombre' placeholder='Nombre comprador'/>
+          <input required className='Input' type='text' name='nombre' />
         </label>
         <label className='Label'>
           Telefono
-          <input required className='Input' type='phone' name='telefono' placeholder='323-555-2345'/>
+          <input required className='Input' type='phone' name='telefono' />
         </label>
         <label required className='Label'>
           Email
-          <input required className='Input' type='email' name='email' placeholder="example@123.com" />
+          <input required className='Input' type='email' name='email' />
         </label>
         <div className='Label'>
           <button type='submit' className='Button'>
             Crear Orden
           </button>
+          {order !== '' && (
+            <button onClick={btnViewOrder} className='Button'>
+              Ver orden
+            </button>
+          )}
+          {viewOrder && (
+            <Link to={'/checkout'} className='Button'>
+              Ver orden
+            </Link>
+          )}
         </div>
       </form>
     </div>

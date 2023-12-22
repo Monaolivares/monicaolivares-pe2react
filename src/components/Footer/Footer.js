@@ -12,12 +12,12 @@ function Footer(){
     return(
         <div className="Footer">
             <div className="RRSS">
-                <ul className="UlRRSS">
-                    <li><a href="https://www.instagram.com/boticabosque/"><img src={Insta}/></a></li>
-                    <li><a href="https://www.facebook.com/p/Botica-Bosque-61550634403377/"><img src={Face}/></a></li>
-                    <li><a><img src={X}/></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCSUGhQZiGhX1BMBRH-mD7Aw"><img src={Youtube}/></a></li>
-                </ul>
+                
+                    <span><a href="https://www.instagram.com/boticabosque/"><img src={Insta}/></a></span>
+                    <span><a href="https://www.facebook.com/p/Botica-Bosque-61550634403377/"><img src={Face}/></a></span>
+                    <span><a><img src={X}/></a></span>
+                    <span><a href="https://www.youtube.com/channel/UCSUGhQZiGhX1BMBRH-mD7Aw"><img src={Youtube}/></a></span>
+            
             </div>
             <div className="SiteLinks">
                 <ul>

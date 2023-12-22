@@ -8,7 +8,7 @@ import Logo from "../../img/botica.png"
 import CartWidget from "../CartWidget/CartWidget";
 import ItemListContainer from "../ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
-import Textil from "../sections/textil"; 
+
 
 const NavBar = () => {
     return (

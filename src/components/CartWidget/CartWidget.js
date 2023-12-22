@@ -7,8 +7,8 @@ const CartWidget = () => {
   const {cart} = useContext(CartContext)
 
   return (
-    <Link to='/cart' className={style.CartWidget}>
-      <div className={style.cartIconContainer}>
+    <Link to='/cart' className="CartWidget">
+      <div className="cartIconContainer">
         <img className='CartImg' src={cartIcon} alt='cart-widget' />
         <p className='pCartWidget'>{cart.items.length}</p>
       </div>
